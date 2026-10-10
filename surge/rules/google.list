@@ -1,0 +1,25 @@
+# General Google services. Service-specific traffic such as YouTube is matched first.
+DOMAIN-KEYWORD,google
+DOMAIN-SUFFIX,1e100.net
+DOMAIN-SUFFIX,android.com
+DOMAIN-SUFFIX,appspot.com
+DOMAIN-SUFFIX,blogger.com
+DOMAIN-SUFFIX,blogspot.com
+DOMAIN-SUFFIX,chromium.org
+DOMAIN-SUFFIX,deepmind.com
+DOMAIN-SUFFIX,deepmind.google
+DOMAIN-SUFFIX,firebaseapp.com
+DOMAIN-SUFFIX,firebaseio.com
+DOMAIN-SUFFIX,g.co
+DOMAIN-SUFFIX,ggpht.cn
+DOMAIN-SUFFIX,ggpht.com
+DOMAIN-SUFFIX,gmail.com
+DOMAIN-SUFFIX,goo.gl
+DOMAIN-SUFFIX,goog
+DOMAIN-SUFFIX,gstatic.cn
+DOMAIN-SUFFIX,gstatic.com
+DOMAIN-SUFFIX,gstaticcnapps.cn
+DOMAIN-SUFFIX,gvt1.com
+DOMAIN-SUFFIX,gvt2.com
+DOMAIN-SUFFIX,gvt3.com
+DOMAIN-SUFFIX,recaptcha.net

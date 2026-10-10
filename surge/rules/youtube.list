@@ -1,0 +1,14 @@
+# YouTube web, API, image and media delivery endpoints.
+DOMAIN-KEYWORD,youtube
+DOMAIN-SUFFIX,googlevideo.com
+DOMAIN-SUFFIX,youtu.be
+DOMAIN-SUFFIX,yt.be
+DOMAIN-SUFFIX,ytimg.com
+DOMAIN,video.google.com
+DOMAIN,jnn-pa.googleapis.com
+DOMAIN,youtube.googleapis.com
+DOMAIN,youtubeanalytics.googleapis.com
+DOMAIN,youtubeembeddedplayer.googleapis.com
+DOMAIN,youtubei.googleapis.com
+DOMAIN,youtubereporting.googleapis.com
+DOMAIN,yt3.ggpht.com
