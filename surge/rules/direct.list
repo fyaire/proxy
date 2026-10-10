@@ -1,0 +1,18 @@
+# Explicit direct-routing exceptions and advertising false positives
+DOMAIN-SUFFIX,baidu.com
+DOMAIN-SUFFIX,hzbank.com.cn
+DOMAIN,s2.pstatp.com
+DOMAIN,livewebbs2.msstatic.com
+DOMAIN,static-s.iqiyi.com
+URL-REGEX,^https://(widget|js|api-iam)\.intercom(cdn)?\.(com|io)
+DOMAIN,fairplay.l.qq.com
+DOMAIN,mssdk.bytedance.com
+DOMAIN,mcs.zijieapi.com
+DOMAIN-SUFFIX,snssdk.com
+DOMAIN,staticsns.cdn.bcebos.com
+DOMAIN-SUFFIX,10jqka.com.cn
+DOMAIN,px.effirst.com
+DOMAIN-KEYWORD,eastmoney
+DOMAIN-SUFFIX,sm.cn
+DOMAIN,mtalk.google.com
+DOMAIN-SUFFIX,juejin.cn

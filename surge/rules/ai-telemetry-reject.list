@@ -1,0 +1,6 @@
+# AI product telemetry explicitly kept blocked
+DOMAIN-SUFFIX,api.statsig.com
+DOMAIN-SUFFIX,featuregates.org
+DOMAIN-SUFFIX,segment.io
+DOMAIN-SUFFIX,sentry.io
+DOMAIN-SUFFIX,statsigapi.net

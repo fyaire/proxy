@@ -1,0 +1,2 @@
+# Google Safe Browsing API used for malicious URL checks
+DOMAIN,safebrowsing.googleapis.com
