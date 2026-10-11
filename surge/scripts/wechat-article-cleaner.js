@@ -3,7 +3,9 @@ const css = `<style ${marker}>
 #js_bottom_ad_area,
 #js_bottom_ad_area_wrp,
 #js_bottom_ad_area_wrap,
-.js_bottom_ad_area {
+.js_bottom_ad_area,
+#js_ad_control,
+.js_ad_control {
   display: none !important;
   height: 0 !important;
   min-height: 0 !important;
