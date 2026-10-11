@@ -1,0 +1,9 @@
+#!name=微信公众号底部广告隐藏
+#!desc=隐藏公众号文章底部、留言区上方的微信平台广告卡片；不拦截 wxs.qq.com 资源。仅处理解压后不超过 6 MiB 的文章。
+#!homepage=https://github.com/fyaire/proxy
+
+[Script]
+微信文章底部广告隐藏 = type=http-response,pattern=^https:\/\/mp\.weixin\.qq\.com\/s(?:[\/?#]|$),requires-body=1,max-size=6291456,script-path=https://raw.githubusercontent.com/fyaire/proxy/main/surge/scripts/wechat-article-cleaner.js
+
+[MITM]
+hostname = %APPEND% mp.weixin.qq.com
