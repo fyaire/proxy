@@ -1,4 +1,4 @@
-const marker = 'data-wechat-article-cleaner="3"';
+const marker = 'data-wechat-article-cleaner="4"';
 const css = `<style ${marker}>
 #js_bottom_ad_area,
 #js_bottom_ad_area_wrp,
@@ -124,6 +124,32 @@ const runtime = String.raw`(function () {
     return hidden;
   }
 
+  function inspectElement(element) {
+    if (!element || element.nodeType !== 1) return false;
+    var hidden = false;
+    if (
+      element.matches &&
+      element.matches('#js_bottom_ad_area,#js_bottom_ad_area_wrp,#js_bottom_ad_area_wrap,.js_bottom_ad_area,#js_ad_control,.js_ad_control')
+    ) {
+      hidden = hide(element) || hidden;
+    }
+
+    var elements = [element];
+    if (element.querySelectorAll) {
+      var descendants = element.querySelectorAll('span,div,p,a,button,label');
+      for (var i = 0; i < descendants.length; i += 1) elements.push(descendants[i]);
+    }
+
+    for (var j = 0; j < elements.length; j += 1) {
+      var text = normalize(elements[j].innerText || elements[j].textContent);
+      if (text === '广告' || actionPattern.test(text)) {
+        var card = findCard(elements[j]);
+        if (card) hidden = hide(card) || hidden;
+      }
+    }
+    return hidden;
+  }
+
   function scan() {
     scheduled = false;
     scanRoot(document);
@@ -141,7 +167,22 @@ const runtime = String.raw`(function () {
     schedule();
   }
 
-  new MutationObserver(schedule).observe(document.documentElement, {
+  new MutationObserver(function (mutations) {
+    for (var i = 0; i < mutations.length; i += 1) {
+      var mutation = mutations[i];
+      var target = mutation.target && mutation.target.nodeType === 1
+        ? mutation.target
+        : parentOf(mutation.target);
+      if (target) inspectElement(target);
+
+      for (var j = 0; j < mutation.addedNodes.length; j += 1) {
+        var node = mutation.addedNodes[j];
+        var element = node.nodeType === 1 ? node : parentOf(node);
+        if (element) inspectElement(element);
+      }
+    }
+    schedule();
+  }).observe(document.documentElement, {
     childList: true,
     subtree: true,
     characterData: true
@@ -168,15 +209,10 @@ try {
     const runtimeTag = nonce
       ? `<script nonce="${nonce}" ${marker}>${runtime}</script>`
       : '';
-    let modified = /<\/head\s*>/i.test(body)
-      ? body.replace(/<\/head\s*>/i, `${css}$&`)
-      : `${css}${body}`;
-
-    if (runtimeTag) {
-      modified = /<\/body\s*>/i.test(modified)
-        ? modified.replace(/<\/body\s*>/i, `${runtimeTag}$&`)
-        : `${modified}${runtimeTag}`;
-    }
+    const injection = `${css}${runtimeTag}`;
+    const modified = /<\/head\s*>/i.test(body)
+      ? body.replace(/<\/head\s*>/i, `${injection}$&`)
+      : `${injection}${body}`;
     $done({ body: modified });
   }
 } catch (_) {
